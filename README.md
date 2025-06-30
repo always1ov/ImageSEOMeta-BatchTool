@@ -79,6 +79,22 @@ python batch_seo_meta.py test_images \
 └── dist/  ← 输出文件将保存至此
 ```
 
+## ⚙️ 参数说明
+
+| 参数名           | 类型     | 是否必填 | 说明 |
+|------------------|----------|----------|------|
+| `inputs`         | 路径列表 | ✅       | 要处理的图片文件或文件夹路径（支持多个） |
+| `--recursive` 或 `-r` | 选项     | ❌       | 是否递归扫描子文件夹 |
+| `--author`       | 字符串   | ✅       | 作者（写入 EXIF XPAuthor 或 PNG Author） |
+| `--copyright`    | 字符串   | ✅       | 版权信息（写入 PNG Copyright） |
+| `--title`        | 字符串   | ✅       | 标题（写入 EXIF XPTitle 或 PNG Title） |
+| `--description`  | 字符串   | ✅       | 描述内容（写入 EXIF XPComment 或 PNG Description） |
+| `--keywords`     | 字符串   | ✅       | 关键词，用英文逗号 `,` 分隔，如 `"城市,夜景,剪影"` |
+| `--outdir`       | 路径     | ❌       | 输出目录，默认保存在每张图片所在目录的 `output/` 子目录中 |
+| `--overwrite`    | 选项     | ❌       | 是否覆盖原图（默认否，如启用将替换原文件） |
+| `--workers`      | 整数     | ❌       | 多线程数量，默认等于 CPU 核心数 |
+| `--config`       | 文件路径 | ❌       | 从 JSON 配置文件中加载参数（命令行参数优先） |
+
 ## 项目说明
 
 本项目由 AI 辅助生成，未经长期维护和持续更新，仅供学习和参考。
