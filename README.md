@@ -1,4 +1,4 @@
-# 📸 Batch SEO Meta Rewriter
+# 📸 ImageSEOMeta-ReWrite
 
 ![Status](https://img.shields.io/badge/status-not%20maintained-lightgrey)
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-green)
