@@ -4,76 +4,89 @@
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-green)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
-> 批量给 JPEG/PNG/TIFF/WebP 图片添加 SEO 元数据（作者、标题、关键词等），支持中文无乱码。由 AI 辅助生成，当前不维护。
+> 批量向 JPEG / PNG / TIFF / WebP 图片写入 SEO 元数据（作者、版权、标题、描述、关键词等），支持中文无乱码，多线程并行。  
+> 由 AI 辅助生成，当前不维护，仅供参考和使用。
 
+## 功能特点
 
-## 🛠 依赖安装
+- 支持 JPEG / PNG / TIFF / WebP 图片格式
+- 批量处理，支持多线程加速
+- 写入作者、版权、标题、描述、关键词等 SEO 元数据
+- 中文支持良好，避免乱码（XP* UTF-16LE & PNG iTXt）
+- 支持通过命令行参数或 JSON 配置文件输入
+- 支持递归扫描目录
+- 支持输出到指定目录或覆盖原文件
 
-在使用前，请先安装依赖库：
+## 安装依赖
+
+确保你已安装 Python 3.8 或更高版本，然后安装所需依赖：
 
 ```bash
-pip install pillow piexif
+pip install -r requirements.txt
 ```
 
-## 🚀 快速开始
+## 快速开始
 
-将本项目下载并解压后，打开终端（命令行），进入项目目录，执行：
+方法一：使用 JSON 配置文件（推荐）
 
-```bash
-python batch_seo_meta.py ./photos \
-  --recursive \
-  --author "测试作者" \
-  --copyright "©2025 测试版权" \
-  --title "测试标题" \
-  --description "测试描述" \
-  --keywords "测试,示例,关键字"
-```
-
-## ⚙️ 主要参数说明
-
-| 参数           | 说明                     |
-|----------------|--------------------------|
-| `--author`     | 作者                     |
-| `--copyright`  | 版权信息                 |
-| `--title`      | 标题                     |
-| `--description`| 描述                     |
-| `--keywords`   | 关键词，逗号分隔         |
-| `--recursive`  | 是否递归处理子目录       |
-| `--outdir`     | 指定统一输出目录（可选） |
-| `--overwrite`  | 是否覆盖原文件（谨慎用） |
-
-## 📄 配置文件使用方法（可选）
-
-1. 创建一个 `config.json` 文件，内容示例：
+1.创建配置文件（例如 config.json）：
 
 ```json
 {
-  "inputs": ["./images"],
+  "inputs": ["test_images/"],
   "recursive": true,
-  "author": "测试作者",
-  "copyright": "©2025 测试版权",
+  "author": "测试用户",
+  "copyright_": "©2025 Test",
   "title": "测试标题",
-  "description": "测试描述",
-  "keywords": "测试,示例,关键字",
-  "outdir": "output",
+  "desc": "这是一张用于测试的图片",
+  "keywords": ["测试", "样例", "演示"],
+  "outdir": "test_output",
   "overwrite": false,
-  "workers": 4
+  "workers": 2
 }
 ```
 
-2. 执行脚本时指定配置文件：
+2.执行命令：
 
 ```bash
 python batch_seo_meta.py --config config.json
 ```
 
-## ℹ️ 注意事项
+方法二：使用命令行参数直接运行
 
-- 默认不会修改原图，避免数据丢失。  
-- 覆盖原图请务必备份！  
-- 支持的图片格式：`.jpg`, `.jpeg`, `.png`, `.tif`, `.tiff`, `.webp`  
-- 支持中文字段，无乱码。  
+```bash
+python batch_seo_meta.py test_images \
+  --recursive \
+  --author "测试用户" \
+  --copyright "©2025 Test" \
+  --title "测试标题" \
+  --description "这是一张用于测试的图片" \
+  --keywords "测试,样例,演示" \
+  --outdir test_output \
+  --workers 2
+```
 
-## 📌 项目说明
+## 📁 示例运行目录结构
 
-本项目由 [OpenAI ChatGPT](https://openai.com/chatgpt) 辅助生成，作者整理发布，**目前不维护**，请自行使用或修改.
+```arduino
+.
+├── batch_seo_meta.py
+├── config.json
+├── photos/
+│   ├── image1.jpg
+│   ├── image2.png
+│   └── ...
+└── dist/  ← 输出文件将保存至此
+```
+
+## 项目说明
+
+本项目由 AI 辅助生成，未经长期维护和持续更新，仅供学习和参考。
+
+使用时请务必备份重要图片数据，避免因程序错误导致文件丢失或损坏。
+
+## 许可证
+
+本项目采用 MIT 许可证，欢迎自由使用和修改，但不提供任何保证。
+
+详见 [LICENSE](./LICENSE) 文件。
