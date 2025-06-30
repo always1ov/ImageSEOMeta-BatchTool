@@ -1,0 +1,12 @@
+{
+  "inputs": ["./images"],
+  "recursive": true,
+  "author": "测试作者",
+  "copyright": "©2025 测试版权",
+  "title": "测试标题",
+  "description": "测试描述",
+  "keywords": "测试,示例,关键字",
+  "outdir": "output",
+  "overwrite": false,
+  "workers": 4
+}
